@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const LeftNav = () => {
@@ -18,7 +19,14 @@ const LeftNav = () => {
 
     return (
         <div>
-            <h3>This is Left nav</h3>
+            <h4>All Categories</h4>
+            <div className="ps-4">
+                {
+                    categories.map(category => <p
+                        key={category.id}
+                    ><Link to={`/category/${category.id}`} className="text-black text-decoration-none">{category.name}</Link></p>)
+                }
+            </div>
         </div>
     );
 };
