@@ -5,11 +5,14 @@ import { useState } from "react";
 const LeftNav = () => {
 
     const [categories, setCategories] = useState([]);
+    console.log(categories);
 
     useEffect(() => {
         fetch("http://localhost:5000/categories")
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                setCategories(data)
+            })
             .catch(error => { console.log(error) })
     }, [])
 
