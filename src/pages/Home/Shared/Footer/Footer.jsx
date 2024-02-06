@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <div>
+        <div className="text-align-center">
             <small>All right &copy; riseved</small>
         </div>
     );
