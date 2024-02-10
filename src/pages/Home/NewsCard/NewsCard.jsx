@@ -1,13 +1,23 @@
+import moment from "moment";
 import { Card, Image } from "react-bootstrap";
+import { FaEye, FaRegBookmark, FaRegStar, FaShareFromSquare, FaStar } from "react-icons/fa6";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
 
 const NewsCard = ({ news }) => {
-    const { _id, title, details, image_url, author } = news;
+    const { _id, title, details, image_url, author, total_view, rating } = news;
     return (
         <Card className="mb-4">
-            <Card.Header>
-                <Image width={70} src={author.img} roundedCircle />
+            <Card.Header className="d-flex align-items-center">
+                <Image width={40} height={40} src={author.img} roundedCircle />
+                <div className="ps-2 flex-grow-1">
+                    <p className="mb-0">{author?.name}</p>
+                    <p className="mb-0"><small>{moment(author.published_date).format("yyyy-mm-d")}</small></p>
+                </div>
+                <div>
+                    <FaRegBookmark /> <FaShareFromSquare />
+                </div>
             </Card.Header>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
@@ -20,7 +30,20 @@ const NewsCard = ({ news }) => {
                     }
                 </Card.Text>
             </Card.Body>
-            <Card.Footer className="text-muted">2 days ago</Card.Footer>
+            <Card.Footer className="text-muted d-flex align-items-center">
+                <div className="flex-grow-1">
+                    <Rating
+                        placeholderRating={rating.number}
+                        readonly
+                        emptySymbol={<FaRegStar />}
+                        placeholderSymbol={<FaStar className="text-warning" />}
+                        fullSymbol={<FaStar />}
+                    /> {rating.number}
+                </div>
+                <div>
+                    <p><FaEye /> {total_view}</p>
+                </div>
+            </Card.Footer>
         </Card>
     );
 };
