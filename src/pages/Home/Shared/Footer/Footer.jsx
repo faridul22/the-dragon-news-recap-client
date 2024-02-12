@@ -2,8 +2,8 @@
 
 const Footer = () => {
     return (
-        <div className="text-align-center">
-            <small>All right &copy; riseved</small>
+        <div className="text-center">
+            <small>Dragon News All right &copy; riseved</small>
         </div>
     );
 };

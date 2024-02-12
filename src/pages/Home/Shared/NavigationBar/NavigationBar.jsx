@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
 import { FaUserCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 
 const NavigationBar = () => {
+
+    const { user } = useContext(AuthContext)
     return (
         <Container>
             <div className='p-1 mb-2 bg-body-tertiary d-flex'>
@@ -31,8 +35,13 @@ const NavigationBar = () => {
                         <Nav>
                             <FaUserCheck />
                             {/* <Image variant="circle"></Image> */}
+                            <h3>{user?.name}</h3>
 
-                            <Button variant='secondary'>Login</Button>
+                            {user ? <Button variant='secondary'>LogOut</Button> :
+                                <Link to="/login">
+                                    <Button variant='secondary'>Login</Button>
+                                </Link>
+                            }
 
                         </Nav>
                     </Navbar.Collapse>
