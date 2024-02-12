@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -48,6 +49,9 @@ const Login = () => {
                                         Login
                                     </button>
                                 </div>
+                                <p>
+                                    <small> New to Dragon News? Please <Link to="/register"> Create an account</Link></small>
+                                </p>
                             </form>
                         </div>
                     </div>
