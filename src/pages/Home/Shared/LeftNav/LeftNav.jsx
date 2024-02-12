@@ -8,7 +8,6 @@ import LeftNewsCard from "./LeftNewsCard/LeftNewsCard";
 const LeftNav = () => {
 
     const [categories, setCategories] = useState([]);
-    console.log(categories);
 
     useEffect(() => {
         fetch("http://localhost:5000/categories")

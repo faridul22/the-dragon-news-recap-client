@@ -1,14 +1,22 @@
 import { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
-import { FaUserCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../providers/AuthProvider";
 
 
 const NavigationBar = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => { console.log(error) });
+    }
     return (
         <Container>
             <div className='p-1 mb-2 bg-body-tertiary d-flex'>
@@ -33,12 +41,8 @@ const NavigationBar = () => {
                             </Link>
                         </Nav>
                         <Nav>
-                            <FaUserCheck />
-                            {/* <Image variant="circle"></Image> */}
-                            <h3>{user?.name}</h3>
-
-                            {user ? <Button variant='secondary'>LogOut</Button> :
-                                <Link to="/login">
+                            {
+                                user ? <Button onClick={handleLogOut} variant='secondary'>LogOut</Button> : <Link to="/login">
                                     <Button variant='secondary'>Login</Button>
                                 </Link>
                             }
