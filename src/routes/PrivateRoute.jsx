@@ -5,9 +5,13 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-
+    if (loading) {
+        return <div className="d-flex mt-5 pt-5 justify-content-center">
+            <progress></progress>
+        </div>
+    }
     if (user) {
         return children
     }
