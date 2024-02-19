@@ -79,6 +79,10 @@ const Register = () => {
                                         required
                                     />
                                 </div>
+                                <div className="form-group mb-2">
+                                    <input type="checkbox" name="Accept our" />
+                                    <label className="form-check-label">Accept our <Link to="/terms">Terms & Conditions</Link></label>
+                                </div>
                                 <div className="text-center">
                                     <button type="submit" className="btn btn-danger w-100">
                                         Register
