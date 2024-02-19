@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
+    const [accepted, setAccepted] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,6 +35,11 @@ const Register = () => {
             })
 
     };
+
+    const handleTerms = event => {
+        console.log(event.target.checked)
+        setAccepted(event.target.checked)
+    }
 
     return (
         <div className="container">
@@ -80,11 +86,14 @@ const Register = () => {
                                     />
                                 </div>
                                 <div className="form-group mb-2">
-                                    <input type="checkbox" name="Accept our" />
+                                    <input
+                                        onClick={handleTerms}
+                                        type="checkbox"
+                                        name="accept" />
                                     <label className="form-check-label">Accept our <Link to="/terms">Terms & Conditions</Link></label>
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-danger w-100">
+                                    <button disabled={!accepted} type="submit" className="btn btn-danger w-100">
                                         Register
                                     </button>
                                 </div>
