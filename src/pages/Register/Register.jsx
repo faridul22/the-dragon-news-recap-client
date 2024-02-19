@@ -37,7 +37,6 @@ const Register = () => {
     };
 
     const handleTerms = event => {
-        console.log(event.target.checked)
         setAccepted(event.target.checked)
     }
 
