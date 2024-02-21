@@ -22,19 +22,19 @@ const router = createBrowserRouter([
                 element: <Navigate to="/category/0"></Navigate>
             },
             {
-                path: "/login",
+                path: "login",
                 element: <Login></Login>
             },
             {
-                path: "/register",
+                path: "register",
                 element: <Register></Register>
             },
             {
-                path: "/terms",
+                path: "terms",
                 element: <Terms></Terms>
             },
             {
-                path: "/about",
+                path: "about",
                 element: <About></About>
             },
             {
@@ -47,11 +47,6 @@ const router = createBrowserRouter([
         path: "category",
         element: <Main></Main>,
         children: [
-            // {
-            //     path: "/",
-            //     element: <Category></Category>,
-            //     loader: () => fetch("http://localhost:5000/news")
-            // },
             {
                 path: ":id",
                 element: <Category></Category>,

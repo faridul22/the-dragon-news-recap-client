@@ -14,6 +14,7 @@ const LeftNav = () => {
             .then(res => res.json())
             .then(data => {
                 setCategories(data)
+                console.log(data)
             })
             .catch(error => { console.log(error) })
     }, [])
